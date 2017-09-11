@@ -8,30 +8,30 @@
   包含大陆地区的邮政编码和经纬度信息.
   
 ---------------------------------------
-####  cnarea20150930.7z是最新爬取2015年的数据,截止2015年09月30日.
+####  cnarea20160731.7z是爬取2016年的数据,截止2016年07月31日.
 
-  全部共749756条
+  全部共 **752233** 条
   
-  ·大陆数据共714048条,其中
+  ·大陆数据共 **714367** 条,其中
   
-  省/直辖市 31
+  - 省/直辖市 `31`
   
-  市/州 346
+  - 市/州 `344`
   
-  县/区 3196
+  - 县/区 `3215`
   
-  乡/镇 40798
+  - 乡/镇 `44122`
   
-  村/社区 667519
+  - 村/社区 `666655`
   
-  ·新增台湾数据,共37833条,具体到街/路/村
+  - ·港澳台数据,共 `37866` 条
 
 
 ### 表结构
 
-```
+```mysql
 
-CREATE TABLE `cnarea` (
+CREATE TABLE `cnarea_2016` (
   `id` mediumint(7) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` mediumint(7) unsigned NOT NULL DEFAULT '0' COMMENT '父级ID',
   `level` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '层级',
@@ -43,7 +43,7 @@ CREATE TABLE `cnarea` (
   `merger_name` varchar(50) NOT NULL DEFAULT '' COMMENT '组合名',
   `pinyin` varchar(30) NOT NULL DEFAULT '' COMMENT '拼音',
   `lng` decimal(10,6) NOT NULL DEFAULT '0.000000' COMMENT '经度',
-  `lat` decimal(10,6) NOT NULL DEFAULT '0.000000' COMMENT '维度',
+  `lat` decimal(10,6) NOT NULL DEFAULT '0.000000' COMMENT '纬度',
   PRIMARY KEY (`id`),
   KEY `idx_lev` (`level`,`parent_id`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='中国行政地区表';
